@@ -1,2 +1,10 @@
-# LectureTickets
-A ticketing application facilitating university lecture sign-ups in order to aid faculty in adhering to covid-19 restrictions.
+## Test project to check JavaScript setup of local webpage
+
+In order to start this project do the following
+```
+php -S localhost:8000
+```
+And connect to
+```
+open http://localhost:8000
+```
