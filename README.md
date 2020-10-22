@@ -1,4 +1,4 @@
-## Test project to check JavaScript setup of local webpage
+## About
 
 In order to start this project do the following
 ```
