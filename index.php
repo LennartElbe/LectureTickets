@@ -43,15 +43,17 @@ session_start(); /// initialize session
             </div>
         </nav>
 
-<?php if(check_role( "admin" )) : ?>
         <div class="row">
-            <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" id="delete-class-button" title="You can only delete a row after it has been selected. " class="btn btn-secondary">Löschen</button>
-                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#add-new-class-modal">Neuer Eintrag</button>
+            <div class="col-sm-12">
+                <div class="btn-group" style="margin-top: 10px; margin-bottom: 10px;" role="group" aria-label="Basic example">
+<?php if(check_role( "admin" )) : ?>
+                    <button type="button" id="delete-class-button" title="You can only delete a row after it has been selected. " class="btn btn-secondary">Löschen</button>
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#add-new-class-modal">Neuer Eintrag</button>
+<?php endif; ?>
+                    <button type="button" id="sign-up-button" title="You can only sign up for a class after it has been selected." class="btn btn-secondary" data-toggle="modal" data-target="#sign-up-student-modal">Für einen Platz bewerben</button>
+                </div>
             </div>
         </div>
-<?php endif; ?>
-
         <div class="row">
             <div class="col-sm-12">
                 <table class="table table-striped" style="width:100%">
