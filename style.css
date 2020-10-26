@@ -3,7 +3,10 @@
 }
 
 #here_table {
-  border-style: solid;
   width: 50%;
   margin: auto;
+}
+
+#classes tr.active {
+  background-color: lightblue;
 }
