@@ -55,10 +55,8 @@
     
     $content = file_get_contents("../ticketData/signups.json");
     $content = json_decode($content, true);
-    $content[$id] = array(signups => array(), admittances => array());
+    $content[$id] = array("signups" => array(), "admittances" => array());
     file_put_contents("../ticketData/signups.json", json_encode($content));
-    
-    
     echo(json_encode(array("message" => "done")));
     return;
   } elseif ($action == "delete") {
@@ -92,7 +90,9 @@
     foreach ($classesContent as $entry) {
       $status = "";
       if (in_array($user_name, $signupsContent[$entry["id"]]["signups"])) {
-        $status = "signed-up";
+        $status = "Signed-up";
+      } else {
+        $status = "Not signed-up";
       }
       $entry["status"] = $status;
       $data[] = $entry;

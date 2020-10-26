@@ -2,6 +2,7 @@ function reloadClassTable() {
   jQuery('#classes').children().remove();
   jQuery('#delete-class-button').prop('disabled', true);
   jQuery('#sign-up-button').prop('disabled', true);
+  jQuery('#withdraw-button').prop('disabled', true);
   jQuery.getJSON('/php/classes.php', function (data) {
     data.forEach(function (item, index) {
       jQuery('#classes').append(
@@ -18,8 +19,24 @@ function reloadClassTable() {
 }
 
 jQuery(document).ready(function () {
-  jQuery('#sign-up-button').prop('disabled', true);
   reloadClassTable();
+
+  jQuery('#withdraw-button').on('click', function () {
+    var id = jQuery('#classes tr.active').attr('classid');
+    jQuery.getJSON('php/signups.php', {
+      'action': "withdraw",
+      'id': id,
+    }, function (data) {
+      console.log(JSON.stringify(data));
+      if (data["message"] == "done") {
+        setTimeout(function () { alert("Come back soon!"); }, 100);
+      } else {
+        alert(data["message"]);
+      }
+      reloadClassTable();
+    })
+  })
+
   jQuery('#sign-up-button').on('click', function () {
     var id = jQuery('#classes tr.active').attr('classid');
     jQuery.getJSON('php/signups.php', {
@@ -28,7 +45,7 @@ jQuery(document).ready(function () {
     }, function (data) {
       console.log(JSON.stringify(data));
       if (data["message"] == "done") {
-        alert("Thank you for signing up for this class.");
+        setTimeout(function () { alert("Thank you for signing up for this class."); }, 100);
       } else {
         alert(data["message"]);
       }
@@ -49,12 +66,15 @@ jQuery(document).ready(function () {
       jQuery(this).removeClass('active');
       jQuery('#delete-class-button').prop('disabled', true);
       jQuery('#sign-up-button').prop('disabled', true);
+      jQuery('#withdraw-button').prop('disabled', true);
       return;
     }
     jQuery('#classes tr').removeClass('active');
     jQuery(this).addClass('active');
     jQuery('#delete-class-button').prop('disabled', false);
     jQuery('#sign-up-button').prop('disabled', false);
+    jQuery('#withdraw-button').prop('disabled', false);
+
   })
   jQuery('#add-new-class-save-button').on('click', function () {
     var className = jQuery('#add-new-class-name').val()
@@ -74,6 +94,8 @@ jQuery(document).ready(function () {
     }, function (data) {
       console.log(JSON.stringify(data))
       reloadClassTable();
-    })
+    }).fail(function () {
+      console.log("This did not work for some reason");
+    });
   })
 })

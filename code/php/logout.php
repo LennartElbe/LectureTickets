@@ -1,15 +1,11 @@
 <?php
- session_start();
+session_start();
 
- global $_SESSION;
+global $_SESSION;
 
- if (isset($_SESSION["logged"])) {
-    unset($_SESSION["logged"]);
-    echo("success");
-    return;
- } else {
-    echo("session variable does not exist");
-    return;
- }
+if (isset($_SESSION["logged"])) {
+   unset($_SESSION["logged"]);
+}
+header("Location: /applications/User/login.php");
 
 ?>
