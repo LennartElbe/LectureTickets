@@ -30,7 +30,7 @@ session_start(); /// initialize session
                             <a class="dropdown-item" data-toggle="modal" data-target="#add-new-class-modal" href="#">Vorlesungstermine Hinzufugen</a>
                             <a class="dropdown-item" href="/applications/User/admin.php">User Managment</a>
 <?php endif; ?>
-                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" data-toggle="modal" data-target="#change-password-modal" href="#">Change Password</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/code/php/logout.php">logout</a>
                         </div>
@@ -126,6 +126,30 @@ session_start(); /// initialize session
 
 <?php endif; ?>
 
+    <div class="modal fade" id="change-password-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Change Password</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="add-new-password">New Password</label>
+                        <input type="password" class="form-control" id="new-password" placeholder="...">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" id="change-password-save-button" class="btn btn-primary" data-dismiss="modal">Alakazam</button>
+            </div>
+            </div>
+        </div>
+    </div>
 
 
     <script src="js/jquery-3.5.1.min.js"></script>

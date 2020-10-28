@@ -1,0 +1,19 @@
+{
+    "STU5f99708480a7c": {
+        "Email": "a@gmail.com",
+        "Status": "Password E-mail not sent"
+    },
+    "STU5f99708480a7e": {
+        "Email": "b@gmail.com",
+        "Status": "Password E-mail not sent"
+    },
+    "STU5f99708480a7f": {
+        "Email": "c@gmail.com",
+        "Status": "Password E-mail not sent"
+    },
+    "emails": [
+        "a@gmail.com",
+        "b@gmail.com",
+        "c@gmail.com"
+    ]
+}

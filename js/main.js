@@ -18,8 +18,26 @@ function reloadClassTable() {
   })
 }
 
+function changePassword() {
+  var password = jQuery('#new-password').val()
+  hash = hex_md5(password);
+  if (password == "") {
+    alert("Error: password cannot be empty");
+    return;
+  }
+  jQuery.post('/code/php/changePassword.php', { "pw": hash }, function (data) {
+    console.log("worked or not " + JSON.stringify(data));
+    update();
+  }, "json");
+}
+
+
 jQuery(document).ready(function () {
   reloadClassTable();
+
+  jQuery("#change-password-save-button").on('click', function () {
+    changePassword();
+  })
 
   jQuery('#withdraw-button').on('click', function () {
     var id = jQuery('#classes tr.active').attr('classid');
