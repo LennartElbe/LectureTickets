@@ -1,1 +1,10 @@
-[]
+{
+    "LTS60536636c3124": {
+        "signups": [
+            "admin"
+        ],
+        "admittances": [
+            "admin"
+        ]
+    }
+}
