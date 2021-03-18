@@ -12,6 +12,7 @@ function reloadClassTable() {
         '</td><td>' + item.classStartTime +
         '</td><td>' + item.classEndTime +
         '</td><td>' + item.classSeatCount +
+        '</td><td>' + item.angemeldet +
         '</td><td>' + item.status +
         '</td></tr>')
     })
@@ -34,7 +35,20 @@ function changePassword() {
 
 jQuery(document).ready(function () {
   reloadClassTable();
-
+  jQuery('#dice-roll-button').on('click', function () {
+    console.log('diceroll go');
+    var id = jQuery('#classes tr.active').attr('classid');
+    if (typeof (id) == "undefined") {
+      alert("error no row selected");
+      return;
+    }
+    jQuery.getJSON('php/diceRoll.php', {
+      'id': id
+    }, function (data) {
+      console.log(JSON.stringify(data));
+      reloadClassTable();
+    })
+  })
   jQuery("#change-password-save-button").on('click', function () {
     changePassword();
   })
@@ -73,6 +87,12 @@ jQuery(document).ready(function () {
   jQuery('#delete-class-button').on('click', function () {
     var id = jQuery('#classes tr.active').attr('classid');
     jQuery.getJSON('php/classes.php', {
+      'action': "delete",
+      'id': id
+    }, function (data) {
+      reloadClassTable();
+    })
+    jQuery.getJSON('php/signups.php', {
       'action': "delete",
       'id': id
     }, function (data) {

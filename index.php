@@ -49,6 +49,7 @@ session_start(); /// initialize session
 <?php if(check_role( "admin" )) : ?>
                     <button type="button" id="delete-class-button" title="You can only delete a row after it has been selected. " class="btn btn-secondary">Löschen</button>
                     <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#add-new-class-modal">Neuer Eintrag</button>
+                    <button type="button" id="dice-roll-button" title="Auswürfeln" class="btn btn-secondary">Auswürfeln</button>
 <?php endif; ?>
                     <button type="button" id="sign-up-button" title="You can only sign up for a class after it has been selected." class="btn btn-secondary" data-toggle="modal" data-target="#sign-up-student-modal">Für einen Platz bewerben</button>
                     <button type="button" id="withdraw-button" title="You can only withdraw from a class after it has been selected." class="btn btn-secondary" data-toggle="modal" data-target="#withdraw-student-modal">Zurücktreten</button>
@@ -66,6 +67,7 @@ session_start(); /// initialize session
                             <th>Startzeit</th>
                             <th>Endzeit</th>
                             <th>Sitzplätze</th>
+                            <th>Angemeldet</th>
                             <th style="min-width: 130px;">Status</th>
                         </tr>
                     </thead>

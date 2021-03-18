@@ -52,6 +52,28 @@ if ($action == "signup") {
     }
     file_put_contents("../ticketData/signups.json", json_encode($newcontent));
     echo(json_encode(array("message" => "done")));
+} elseif ($action == "delete") {
+    $content = file_get_contents("../ticketData/signups.json");
+    $content = json_decode($content, true);
+    if (!check_role( "admin" )) {
+       return;
+    }
+    $id = "";
+      if (isset($_GET['id']))
+        $id = $_GET['id'];
+      if ($id == "") {
+        echo(json_encode(array("message" => "failed: id empty")));
+        return;
+      }
+      $content = file_get_contents("../ticketData/signups.json");
+      $content = json_decode($content, true);
+      foreach ($content as &$entry) {
+        if (isset($content[$id])) {
+          unset($content[$id]);
+        }
+      }
+      file_put_contents("../ticketData/signups.json", json_encode($content));
+      echo(json_encode(array("message" => "done".$found)));
 } else {
     $classesContent = file_get_contents("../ticketData/classes.json");
     $classesContent = json_decode($classesContent, true);

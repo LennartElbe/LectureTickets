@@ -89,12 +89,14 @@
     $data = array();
     foreach ($classesContent as $entry) {
       $status = "";
-      if (in_array($user_name, $signupsContent[$entry["id"]]["signups"])) {
+      $angemeldet = 10;
+      if (isset($entry["id"]) && isset($signupsContent[$entry["id"]]) && in_array($user_name, $signupsContent[$entry["id"]]["signups"])) {
         $status = "Signed-up";
       } else {
         $status = "Not signed-up";
       }
       $entry["status"] = $status;
+      $entry["angemeldet"] = $angemeldet;
       $data[] = $entry;
     }
     echo(json_encode($data));
