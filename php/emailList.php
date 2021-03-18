@@ -17,9 +17,8 @@
         $emails = explode(',', $emailList);
         foreach ($emails as $studentEmail) {
             $studentID = uniqid('STU');
-            $content["$studentID"] = array("Email" => $studentEmail, "Status" => "Password E-mail not sent");
+            $content["$studentID"] = array("Email" => $studentEmail, "sentStatus" => false);
         }
-        $content["emails"] = $emails;
         file_put_contents("../ticketData/newStudents.json", json_encode($content));
         echo (json_encode ( array( "message" => "Emails saved." ) ) );
     } else {
