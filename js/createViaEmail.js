@@ -30,4 +30,4 @@ jQuery(document).ready(function () {
     jQuery('#create-psw-via-email').on('click', function () {
         addUserViaEmail();
     });
-}); 
+});  
